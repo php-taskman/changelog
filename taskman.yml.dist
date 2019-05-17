@@ -8,7 +8,7 @@ github:
   exclude:
     labels: [feature-branch, bugfix-branch]
 command:
-  githubchangelog:generate:
+  github:changelog:
     description: Generate a changelog for github.
     tasks:
       - docker run  --rm -v $(pwd):$(pwd) -w $(pwd) -i muccg/github-changelog-generator ${github.owner}/${github.repo} -t ${github.generate.token} --release-branch ${github.release.branch} --exclude-labels ${github.exclude.labels}
