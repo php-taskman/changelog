@@ -1,0 +1,14 @@
+{
+    "name": "phptaskman/changelog",
+    "type": "robo-tasks",
+    "description": "Github changelog tasks for PHP Taskman",
+    "authors": [
+        {
+            "name": "Arito Melo",
+            "email": "aritomelo@mail.com"
+        }
+    ],
+    "require": {
+        "phptaskman/core": "^0.1.9"
+    }
+}
