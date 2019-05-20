@@ -7,16 +7,17 @@ github:
     branch: 'master'
   exclude:
     labels: [feature-branch, bugfix-branch]
-command:
+
+commands:
   github:changelog:
     description: Generate a changelog for github.
     tasks:
-      - docker run  --rm -v $(pwd):$(pwd) -w $(pwd) -i muccg/github-changelog-generator ${github.owner}/${github.repo} -t ${github.generate.token} --release-branch ${github.release.branch} --exclude-labels ${github.exclude.labels}
+      - docker run --rm -v $(pwd):$(pwd) -w $(pwd) -i muccg/github-changelog-generator ${github.owner}/${github.repo} -t ${github.generate.token} --release-branch ${github.release.branch} --exclude-labels ${github.exclude.labels}
     options:
       owner:
         config: github.owner
         description: 'The repository owner.'
-        default: ${github.repo}
+        default: ${github.owner}
       repo:
         config: github.repo
         description: 'The repository name.'
@@ -24,7 +25,7 @@ command:
       branch:
         config: github.release.branch
         description: 'The branch to be released.'
-        default: 'master'
+        default: ${github.release.branch}
       token:
         config: github.generate.token
         description: 'The Token'
