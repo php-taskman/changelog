@@ -9,6 +9,6 @@
         }
     ],
     "require": {
-        "phptaskman/core": "^0.1.9"
+        "phptaskman/core": "^0.1.10"
     }
 }
