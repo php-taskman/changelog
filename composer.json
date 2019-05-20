@@ -1,6 +1,7 @@
 {
     "name": "phptaskman/changelog",
     "type": "robo-tasks",
+    "license": "MIT",
     "description": "Github changelog tasks for PHP Taskman",
     "authors": [
         {
