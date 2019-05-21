@@ -16,6 +16,6 @@
         }
     ],
     "require": {
-        "phptaskman/core": "^0.1.12"
+        "phptaskman/core": "^0.1.13"
     }
 }
