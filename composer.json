@@ -5,11 +5,17 @@
     "description": "Github changelog tasks for PHP Taskman",
     "authors": [
         {
-            "name": "Arito Melo",
-            "email": "aritomelo@mail.com"
+            "name": "Arito Lima Melo",
+            "email": "aritomelo@gmail.com",
+            "role": "Author"
+        },
+        {
+            "name": "Pol Dellaiera",
+            "homepage": "https://not-a-number.io",
+            "role": "Author"
         }
     ],
     "require": {
-        "phptaskman/core": "^0.1.10"
+        "phptaskman/core": "^0.1.12"
     }
 }

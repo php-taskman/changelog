@@ -1,0 +1,63 @@
+github:
+    token: Create a file named taskman.yml and set the token in it.
+    changelog:
+        user: "The repository user, normally the company name."
+        project: The project name.
+        filename: CHANGELOG.md
+        release:
+            branch: "master"
+        between-tags: ~
+        exclude:
+            labels: ~
+            tags: ~
+            tags-regex: ~
+
+commands:
+    github:changelog:
+        description: Generate a changelog for github.
+        tasks:
+            -
+                task: "docker.run"
+                tty: true
+                rm: true
+                volume: "${taskman.working_dir}:${taskman.working_dir}"
+                dir: "${taskman.working_dir}"
+                image: "ferrarimarco/github-changelog-generator:1.14.3"
+                exec: "${github.changelog.user}/${github.changelog.project} -t ${github.token} --release-branch ${github.changelog.release.branch} --exclude-labels ${github.changelog.exclude.labels} --exclude-tags ${github.changelog.exclude.tags} --exclude-tags-regex ${github.changelog.exclude.tags-regex} --between-tags ${github.changelog.between-tags} -o ${github.changelog.filename}"
+        options:
+            user:
+                config: github.changelog.user
+                description: 'The repository user.'
+                default: ${github.changelog.user}
+            project:
+                config: github.changelog.project
+                description: 'The repository project name.'
+                default: ${github.changelog.project}
+            filename:
+                config: github.changelog.filename
+                description: 'The output file.'
+                default: ${github.changelog.filename}
+            release-branch:
+                config: github.changelog.release.branch
+                description: 'The branch to be released.'
+                default: ${github.changelog.release.branch}
+            between-tags:
+                config: github.changelog.between-tags
+                description: 'The git tags to use for generating the changelog'
+                default: ${github.changelog.between-tags}
+            token:
+                config: github.token
+                description: 'The Github token'
+                default: ${github.token}
+            exclude-labels:
+                config: github.changelog.exclude.labels
+                description: 'The labels to exclude from changelog.'
+                default: ${github.changelog.exclude.labels}
+            exclude-tags:
+                config: github.changelog.exclude.tags
+                description: 'The git tags to exclude from changelog.'
+                default: ${github.changelog.exclude.tags}
+            exclude-tags-regex:
+                config: github.changelog.exclude.tags-regex
+                description: 'The regex to filter out git tags from changelog.'
+                default: ${github.changelog.exclude.tags-regex}
