@@ -23,41 +23,55 @@ commands:
                 volume: "${taskman.working_dir}:${taskman.working_dir}"
                 dir: "${taskman.working_dir}"
                 image: "ferrarimarco/github-changelog-generator:1.14.3"
-                exec: "${github.changelog.user}/${github.changelog.project} -t ${github.token} --release-branch ${github.changelog.release.branch} --exclude-labels ${github.changelog.exclude.labels} --exclude-tags ${github.changelog.exclude.tags} --exclude-tags-regex ${github.changelog.exclude.tags-regex} --between-tags ${github.changelog.between-tags} -o ${github.changelog.filename}"
+                exec: "--user=\"${github.changelog.user}\" --project=\"${github.changelog.project}\" --token=\"${github.token}\" --release-branch=\"${github.changelog.release.branch}\" --exclude-labels=\"${github.changelog.exclude.labels}\" --exclude-tags=\"${github.changelog.exclude.tags}\" --exclude-tags-regex=\"${github.changelog.exclude.tags-regex}\" --between-tags=\"${github.changelog.between-tags}\" ${github.changelog.extra} --output=\"${github.changelog.filename}\""
         options:
             user:
                 config: github.changelog.user
                 description: 'The repository user.'
-                default: ${github.changelog.user}
+                mode: 2
+                default: ~
             project:
                 config: github.changelog.project
                 description: 'The repository project name.'
-                default: ${github.changelog.project}
+                mode: 2
+                default: ~
             filename:
                 config: github.changelog.filename
                 description: 'The output file.'
-                default: ${github.changelog.filename}
+                mode: 4
+                default: ~
             release-branch:
                 config: github.changelog.release.branch
                 description: 'The branch to be released.'
-                default: ${github.changelog.release.branch}
+                mode: 4
+                default: ~
             between-tags:
                 config: github.changelog.between-tags
                 description: 'The git tags to use for generating the changelog'
-                default: ${github.changelog.between-tags}
+                mode: 4
+                default: ~
             token:
                 config: github.token
                 description: 'The Github token'
-                default: ${github.token}
+                mode: 2
+                default: ~
             exclude-labels:
                 config: github.changelog.exclude.labels
                 description: 'The labels to exclude from changelog.'
-                default: ${github.changelog.exclude.labels}
+                mode: 4
+                default: ~
             exclude-tags:
                 config: github.changelog.exclude.tags
                 description: 'The git tags to exclude from changelog.'
-                default: ${github.changelog.exclude.tags}
+                mode: 4
+                default: ~
             exclude-tags-regex:
                 config: github.changelog.exclude.tags-regex
                 description: 'The regex to filter out git tags from changelog.'
-                default: ${github.changelog.exclude.tags-regex}
+                mode: 4
+                default: ~
+            extra:
+                config: github.changelog.extra
+                description: 'Custom extra flags to add to the command.'
+                mode: 4
+                default: ''
