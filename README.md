@@ -18,6 +18,7 @@ github:
     release:
       branch: 0.x
     between-tags: $(git tag --sort=-creatordate --merged '${github.changelog.release.branch}' | tr '\n' ',')
+    extra: --no-unreleased
 ```
 
 and then:
