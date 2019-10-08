@@ -20,8 +20,8 @@ commands:
                 task: "docker.run"
                 tty: true
                 rm: true
-                volume: "${taskman.working_dir}:${taskman.working_dir}"
-                dir: "${taskman.working_dir}"
+                volume: "${options.working_dir}:${options.working_dir}"
+                dir: "${options.working_dir}"
                 image: "ferrarimarco/github-changelog-generator:1.14.3"
                 exec: "--user=\"${github.changelog.user}\" --project=\"${github.changelog.project}\" --token=\"${github.token}\" --release-branch=\"${github.changelog.release.branch}\" --exclude-labels=\"${github.changelog.exclude.labels}\" --exclude-tags=\"${github.changelog.exclude.tags}\" --exclude-tags-regex=\"${github.changelog.exclude.tags-regex}\" --between-tags=\"${github.changelog.between-tags}\" ${github.changelog.extra} --output=\"${github.changelog.filename}\""
         options:

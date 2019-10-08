@@ -17,6 +17,6 @@
     ],
     "require": {
         "php": "< 7",
-        "phptaskman/core": "^0.1.13"
+        "phptaskman/core": "^0.1.21"
     }
 }
